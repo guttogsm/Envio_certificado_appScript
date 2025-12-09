@@ -144,16 +144,16 @@ function enviarEmailComCertificado(dados, token, pdfFile) {
     ? Utilities.formatDate(new Date(dados.validade), tz, 'dd/MM/yyyy')
     : 'indeterminada';
 
-  const assunto = `Certificado - ${dados.curso || 'Treinamento SIEG'}`;
+  const assunto = `Certificado - ${dados.curso || 'Treinamento SIE'}`;
 
   const corpoHtml = `
     Olá, ${dados.nome}!<br><br>
-    Obrigado por participar do treinamento <b>${dados.curso || 'SIEG'}</b>.<br><br>
+    Obrigado por participar do treinamento <b>${dados.curso || 'SIE'}</b>.<br><br>
     Seu certificado em PDF está anexado a este e-mail.<br><br>
     Token: <b>${token}</b><br>
     Validade: <b>${validadeStr}</b><br><br>
     Qualquer dúvida, conte com nosso time.<br>
-    Equipe SIEG.
+    Equipe SIE.
   `;
 
   MailApp.sendEmail({
@@ -161,6 +161,6 @@ function enviarEmailComCertificado(dados, token, pdfFile) {
     subject: assunto,
     htmlBody: corpoHtml,
     attachments: [pdfFile.getAs('application/pdf')],
-    name: 'Equipe SIEG'
+    name: 'Equipe SIE'
   });
 }
